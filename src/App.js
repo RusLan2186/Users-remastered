@@ -1,6 +1,6 @@
 import './scss/App.scss';
 import Users from './components/Users/Users';
-// import TypeScriptExample from './components/TypeScriptExample';
+
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <div className='users'>
         <Users />
       </div>
-      {/* <TypeScriptExample /> */}
+
     </div>
   );
 };
