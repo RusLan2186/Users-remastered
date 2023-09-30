@@ -1,0 +1,40 @@
+@use "sass:math";
+// @import "../../../scss//Reset.scss";
+
+.myModal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: 0.4s;
+   background: rgb(180, 176, 176, 0.6);
+   pointer-events: none;
+   z-index: 110;
+}
+.myModal.active {
+   opacity: 1;
+   pointer-events: all;
+   cursor: pointer;
+}
+.myModalContent {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 50px;
+   border: 3px solid rgb(255, 255, 255);
+   border-radius: 16px;
+   background-color: rgb(90, 85, 85);
+   width: 35%;
+   transform: scale(0.5);
+   transition: transform 0.5s ease 0s;
+   z-index: 120;
+   cursor: auto;
+   &.active {
+      transform: scale(1);
+   }
+}

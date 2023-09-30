@@ -1,0 +1,166 @@
+@use "sass:math";
+@import "./Reset.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.input,
+.input__error {
+  border: 1px solid rgb(10, 10, 10);
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.button {
+  background-color: transparent;
+  padding: 5px 30px;
+  border: 1px solid rgb(10, 10, 10);
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.users {
+  flex: 1 1 auto;
+  padding-top: 30px;
+}
+.container {
+  max-width: 1500px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.add__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
+}
+
+.form__item {
+  width: 60%;
+  position: relative;
+}
+// //////ERRORS
+.error {
+  position: absolute;
+  top: -20px;
+  color: red;
+  font-weight: 700;
+}
+.load__error {
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  font-size: 30px;
+}
+.change__error {
+  position: absolute;
+  font-size: 18px;
+  color: red;
+  top: -25px;
+}
+.input__error {
+  border: 3px solid rgb(235, 18, 18);
+}
+// .........................USERLIST
+.user__list,
+.user__list-change {
+  display: flex;
+  border: 1px solid rgb(10, 10, 10);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+.user__list-change {
+  padding: 35px 15px;
+}
+.user-list__item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.user-list__buttons {
+  display: flex;
+  column-gap: 15px;
+}
+.user-list__info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-transform: capitalize;
+}
+.user-list__number {
+  font-weight: 700;
+  color: rgb(236, 64, 6);
+}
+.user-list__name {
+}
+.user-list__username {
+  font-weight: 700;
+}
+// /CHANGE
+.add__change-form {
+  display: flex;
+  column-gap: 20px;
+  width: 100%;
+  margin: 30px 0;
+}
+.change-form__item {
+  width: 100%;
+  position: relative;
+}
+
+.is__loading {
+  font-size: 40px;
+  text-align: center;
+  font-weight: 700px;
+}
+// SEACH
+.search__item {
+  width: 30%;
+}
+.search__form {
+  position: relative;
+}
+.search-input__clear {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 5px;
+  font-size: 25px;
+}
+.hidden {
+  display: none;
+}
+
+// sort
+.sort__wrapper {
+  position: relative;
+}
+.sort__title {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.sort__list {
+  cursor: pointer;
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid rgb(10, 10, 10);
+  border-radius: 10px;
+  margin-top: 15px;
+
+  li {
+    padding: 5px 10px;
+    text-transform: capitalize;
+  }
+}
