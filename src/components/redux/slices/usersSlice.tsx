@@ -1,10 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 
-type ListType = {
+
+export type ListType = {
 id:number;
 name:string;
 username:string;
+email?:string;
+adress?:{};
+
 }
 
 
@@ -35,20 +39,22 @@ export const usersSlice = createSlice({
     usersFetching: (state) => {
       state.isLoading = true;
     },
-    usersFetchingSuccess: (state, action) => {
+    usersFetchingSuccess: (state, action:PayloadAction<ListType[]>) => {
       state.isLoading = false;
       state.error = '';
       state.list = action.payload;
+
     },
-    usersFetchingError: (state, action) => {
+    usersFetchingError: (state, action:PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
-    },
+     },
 
-    add: (state, action) => {
+    add: (state, action:PayloadAction<ListType>) => {
       state.list.push(action.payload);
     },
-    remove: (state, action) => {
+
+    remove: (state, action:PayloadAction<number>) => {
       const idx = state.list.findIndex((i) => {
         return i.id === action.payload;
       });
@@ -56,7 +62,7 @@ export const usersSlice = createSlice({
         state.list.splice(idx, 1);
       }
     },
-    change: (state, action) => {
+    change: (state, action:PayloadAction<ListType>) => {
       const idxChange = state.list.findIndex((i) => {
         return i.id === action.payload.id;
       });
@@ -65,18 +71,21 @@ export const usersSlice = createSlice({
         state.list[idxChange].username = action.payload.username;
       }
     },
-    search: (state, action) => {
+    search: (state, action:PayloadAction<string>) => {
       state.searchList = state.list.filter(
         (user) =>
           user.name.toLowerCase().includes(action.payload) ||
           user.username.toLowerCase().includes(action.payload),
       );
     },
-    sort: (state, action) => {
+    sort: (state, action:PayloadAction<ListType[]> ) => {
       state.list = action.payload;
+  
+      
     },
-    openWindow: (state, action) => {
+    openWindow: (state, action:PayloadAction<boolean>) => {
       state.isModal = action.payload;
+      console.log(action.payload);
     },
   },
 });

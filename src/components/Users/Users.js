@@ -18,7 +18,6 @@ const Users = () => {
   const [searchValue, setSearchValue] = useState('');
   const [sortOpen, setSortOpen] = useState(false);
   // const [openModal, setOpenModal] = useState(false);
-  console.log(usersList);
 
   useEffect(() => {
     dispatch(fetchUsers());
