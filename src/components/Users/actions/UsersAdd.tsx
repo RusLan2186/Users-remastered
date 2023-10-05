@@ -2,14 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { add, openWindow } from '../../redux/slices/usersSlice';
 import Modal from '../../Modal/Modal';
+import { RootState } from '../../redux/store';
 
-const UsersAdd = () => {
+const UsersAdd:React.FC = () => {
   const [post, setPost] = useState({ name: '', username: '' });
   const dispatch = useDispatch();
-  const [error, setError] = useState({ errorName: '', errorUserName: '' });
-  const openModal = useSelector((store) => store.users.isModal);
+  const [error, setError] = useState<{errorName?:string; errorUserName?:string;}>( );
+  const openModal = useSelector((store:RootState) => store.users.isModal);
 
-  const addUser = (name, username) => {
+  const addUser = (name:string, username:string) => {
     const newUser = {
       id: Date.now(),
       name,
@@ -22,10 +23,10 @@ const UsersAdd = () => {
       dispatch(openWindow(false));
     }
     if (newUser.username.length <= 3) {
-      setError({ errorUserName: 'Enter username' });
+      setError({errorUserName: 'Enter username' });
     }
     if (newUser.name.length <= 3) {
-      setError({ errorName: 'Enter name' });
+      setError({errorName: 'Enter name' });
     }
   };
   useEffect(() => {
@@ -47,21 +48,22 @@ const UsersAdd = () => {
           Add Users
         </button>
       </div>
-      {openModal && (
-        <Modal changeError={setError} changePost={setPost}>
+      {openModal &&  (
+        <Modal  changeError={setError} changePost={setPost}>
           <div className='add__form'>
             <div className='form__item'>
-              <p className='error'>{error.errorName}</p>
-              <input
-                className={error.errorName ? 'input__error' : 'input'}
-                value={post.name}
-                onChange={(e) => setPost({ ...post, name: e.target.value })}
-                placeholder='Enter name'
-                type='text'
-              />
-            </div>
+              {error && <p className='error'>{error.errorName}</p>}
+        
+                <input
+                  className={error.errorName ? 'input__error' : 'input'}
+                  value={post.name}
+                  onChange={(e) => setPost({ ...post, name: e.target.value })}
+                  placeholder='Enter name'
+                  type='text'
+                />
+         </div>
             <div className='form__item'>
-              <p className='error'>{error.errorUserName}</p>
+              {error &&   <p className='error'>{error.errorUserName}</p>}
               <input
                 className={error.errorUserName ? 'input__error' : 'input'}
                 value={post.username}

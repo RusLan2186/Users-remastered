@@ -12,7 +12,8 @@ type PostType = {
 
 interface ModaProps{
   changePost: ({}:PostType) => void;
-  changeError:({}:string)=>void; 
+  // changeError:({}:string)=>void; 
+  changeError:any;
   children:React.ReactChild | React.ReactNode
   
 }
