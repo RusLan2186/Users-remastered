@@ -1,12 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+
+type ListType = {
+id:number;
+name:string;
+username:string;
+}
+
+
+interface UserSliceState{
+  list:ListType[];
+  isLoading:boolean;
+  error:string;
+  isModal:boolean;
+  searchList:ListType[];
+
+}
+
+const initialState:UserSliceState = {
   list: [],
   isLoading: false,
   error: '',
   isModal: false,
   searchList: [],
+
 };
+
+
 
 export const usersSlice = createSlice({
   name: 'users',
