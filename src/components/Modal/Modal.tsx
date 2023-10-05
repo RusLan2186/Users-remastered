@@ -10,14 +10,12 @@ type PostType = {
   username:string;
 }
 
+
 interface ModaProps{
   changePost: ({}:PostType) => void;
   // changeError:({}:string)=>void; 
   changeError:({})=>void; 
-
-  
-  // changeError:any;
-  children:React.ReactChild | React.ReactNode
+children:React.ReactChild | React.ReactNode
   
 }
 
@@ -37,6 +35,7 @@ const Modal:React.FC<ModaProps> = ({ children, changeError, changePost }) => {
 
   const closeModal = () => {
     changeError('');
+  
     changePost({ name: '', username: '' });
     dispatch(openWindow(false));
   };
