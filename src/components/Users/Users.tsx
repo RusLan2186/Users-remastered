@@ -2,19 +2,20 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UsersList from './UsersList';
 
-import { remove, search } from '../redux/slices/usersSlice';
+import { ListType, UserSliceState, remove, search } from '../redux/slices/usersSlice';
 import { fetchUsers } from '../redux/slices/ActionCreators';
 import UsersAdd from './actions/UsersAdd';
 import UsersSearch from './actions/UsersSearch';
 import UsersSort from './actions/UsersSort';
 import { v4 as uuidv4 } from 'uuid';
+import { RootState, useAppDispatch } from '../redux/store';
 
-const Users = () => {
-  const dispatch = useDispatch();
-  const usersList = useSelector((store) => store.users.list);
-  const loadError = useSelector((store) => store.users.error);
-  const isLoading = useSelector((store) => store.users.isLoading);
-  const searchList = useSelector((store) => store.users.searchList);
+const Users:React.FC  = () => {
+  const dispatch = useAppDispatch();
+  const usersList = useSelector((store:RootState) => store.users.list);
+  const loadError = useSelector((store:RootState) => store.users.error);
+  const isLoading = useSelector((store:RootState) => store.users.isLoading);
+  const searchList = useSelector((store:RootState) => store.users.searchList);
   const [searchValue, setSearchValue] = useState('');
   const [sortOpen, setSortOpen] = useState(false);
   // const [openModal, setOpenModal] = useState(false);
@@ -23,8 +24,10 @@ const Users = () => {
     dispatch(fetchUsers());
   }, []);
 
-  const deleteUser = (user) => {
+  const deleteUser = (user:number) => {
     dispatch(remove(user));
+    
+    
   };
   useEffect(() => {
     dispatch(search(searchValue));
@@ -54,7 +57,7 @@ const Users = () => {
       </div>
       {searchList.length !== 0 ? (
         <div>
-          {searchList.map((user, index) => (
+          {searchList.map((user:ListType, index:number) => (
             <UsersList key={uuidv4()} number={index + 1} user={user} remove={deleteUser} />
           ))}
         </div>

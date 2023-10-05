@@ -1,11 +1,11 @@
 import React from 'react';
 import cl from './Modal.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { openWindow } from '../slices/usersSlice';
+import { openWindow } from '../redux/slices/usersSlice';
 
 const Modal = ({ children, changeError, changePost }) => {
   const dispatch = useDispatch();
-  const openModal = useSelector((store) => store.users.isModal);
+  // const openModal = useSelector((store) => store.users.isModal);
   const rootClasses = [cl.myModal];
   if (openModal) {
     rootClasses.push(cl.active);

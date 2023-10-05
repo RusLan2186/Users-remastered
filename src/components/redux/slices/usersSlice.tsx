@@ -12,7 +12,7 @@ adress?:{};
 }
 
 
-interface UserSliceState{
+export interface UserSliceState{
   list:ListType[];
   isLoading:boolean;
   error:string;
@@ -85,7 +85,7 @@ export const usersSlice = createSlice({
     },
     openWindow: (state, action:PayloadAction<boolean>) => {
       state.isModal = action.payload;
-      console.log(action.payload);
+    
     },
   },
 });

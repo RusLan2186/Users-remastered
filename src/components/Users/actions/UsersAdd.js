@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { add, openWindow } from '../../redux/slices/usersSlice';
-import Modal from '../../redux/Modal/Modal';
+import Modal from '../../Modal/Modal';
 
 const UsersAdd = () => {
   const [post, setPost] = useState({ name: '', username: '' });
@@ -47,7 +47,7 @@ const UsersAdd = () => {
           Add Users
         </button>
       </div>
-      {openModal && (
+      {/* {openModal && (
         <Modal changeError={setError} changePost={setPost}>
           <div className='add__form'>
             <div className='form__item'>
@@ -75,7 +75,7 @@ const UsersAdd = () => {
             </button>
           </div>
         </Modal>
-      )}
+      )} */}
     </div>
   );
 };
