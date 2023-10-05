@@ -13,13 +13,17 @@ type PostType = {
 interface ModaProps{
   changePost: ({}:PostType) => void;
   // changeError:({}:string)=>void; 
-  changeError:any;
+  changeError:({})=>void; 
+
+  
+  // changeError:any;
   children:React.ReactChild | React.ReactNode
   
 }
 
 
 const Modal:React.FC<ModaProps> = ({ children, changeError, changePost }) => {
+
   const dispatch = useAppDispatch();
   const openModal = useSelector((store:RootState) => store.users.isModal);
   const rootClasses = [cl.myModal];

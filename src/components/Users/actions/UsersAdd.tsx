@@ -55,7 +55,7 @@ const UsersAdd:React.FC = () => {
               {error && <p className='error'>{error.errorName}</p>}
         
                 <input
-                  className={error.errorName ? 'input__error' : 'input'}
+                  className={error && error.errorName ? 'input__error' : 'input'}
                   value={post.name}
                   onChange={(e) => setPost({ ...post, name: e.target.value })}
                   placeholder='Enter name'
@@ -65,7 +65,7 @@ const UsersAdd:React.FC = () => {
             <div className='form__item'>
               {error &&   <p className='error'>{error.errorUserName}</p>}
               <input
-                className={error.errorUserName ? 'input__error' : 'input'}
+                className={error&& error.errorUserName ? 'input__error' : 'input'}
                 value={post.username}
                 onChange={(e) => setPost({ ...post, username: e.target.value })}
                 placeholder='Enter username'
