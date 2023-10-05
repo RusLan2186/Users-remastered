@@ -47,7 +47,7 @@ const UsersAdd = () => {
           Add Users
         </button>
       </div>
-      {/* {openModal && (
+      {openModal && (
         <Modal changeError={setError} changePost={setPost}>
           <div className='add__form'>
             <div className='form__item'>
@@ -75,7 +75,7 @@ const UsersAdd = () => {
             </button>
           </div>
         </Modal>
-      )} */}
+      )}
     </div>
   );
 };

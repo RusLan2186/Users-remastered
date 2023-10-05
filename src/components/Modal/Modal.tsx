@@ -1,11 +1,26 @@
 import React from 'react';
 import cl from './Modal.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { openWindow } from '../redux/slices/usersSlice';
+import { UserSliceState, openWindow } from '../redux/slices/usersSlice';
+import { RootState, useAppDispatch } from '../redux/store';
 
-const Modal = ({ children, changeError, changePost }) => {
-  const dispatch = useDispatch();
-  // const openModal = useSelector((store) => store.users.isModal);
+
+type PostType = {
+  name:string;
+  username:string;
+}
+
+interface ModaProps{
+  changePost: ({}:PostType) => void;
+  changeError:({}:string)=>void; 
+  children:React.ReactChild | React.ReactNode
+  
+}
+
+
+const Modal:React.FC<ModaProps> = ({ children, changeError, changePost }) => {
+  const dispatch = useAppDispatch();
+  const openModal = useSelector((store:RootState) => store.users.isModal);
   const rootClasses = [cl.myModal];
   if (openModal) {
     rootClasses.push(cl.active);
