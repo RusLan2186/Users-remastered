@@ -3,30 +3,30 @@ import { useDispatch } from 'react-redux';
 import { ListType, change } from '../../redux/slices/usersSlice';
 import { useAppDispatch } from '../../redux/store';
 
+// interface UsersChangeProps{
+//   user:ListType;
+//   // isChange?:boolean;
+//   setIsChange:(isChange:boolean) =>void;
+// }
 
-interface UsersChangeProps{
-  user:ListType;
-  // isChange?:boolean;
-  setIsChange:(isChange:boolean) =>void;
-}
-
-
-const UsersChange:React.FC<UsersChangeProps> = ({ user, setIsChange }) => {
-  const dispatch = useAppDispatch();
-  const [changePost, setChangePost] = useState<{}>({
+// const UsersChange:React.FC<UsersChangeProps> = ({ user, setIsChange }) => {
+const UsersChange = ({ user, setIsChange }) => {
+  const dispatch = useDispatch();
+  const [changePost, setChangePost] = useState({
     changeName: user.name,
     changeUserName: user.username,
   });
-  
-  const [changeError, setChangeError] = useState<
-    { changeErrorName?: string; changeErrorUserName?:string; }
-  >();
+  const [changeError, setChangeError] = useState({ changeErrorName: '' });
 
-  const changeUsers = (id:number) => {
+  // const [changeError, setChangeError] = useState<
+  //   { changeErrorName?: string; changeErrorUserName?:string; }
+  // >();
+
+  const changeUsers = (id) => {
     if (changePost.changeName.length > 3 && changePost.changeUserName.length > 3) {
       dispatch(change({ id, name: changePost.changeName, username: changePost.changeUserName }));
       setIsChange(false);
-      setChangeError({ changeErrorName: '', changeErrorUserName: '' });
+      setChangeError({ changeErrorName: '', changeErrorUserName: '', changeErrorUserName: '' });
     }
     if (changePost.changeUserName.length <= 3) {
       setChangeError({ changeErrorUserName: 'Enter username' });
