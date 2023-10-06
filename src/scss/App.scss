@@ -14,6 +14,11 @@
   width: 100%;
   border-radius: 10px;
   font-size: 20px;
+  transition: 0.2 all;
+  &:focus {
+    border: 3px solid rgb(10, 10, 10);
+    transition: 0.2s all;
+  }
 }
 
 .button {
@@ -22,6 +27,12 @@
   border: 1px solid rgb(10, 10, 10);
   border-radius: 10px;
   font-size: 20px;
+  transition: 0.4s all;
+  &:hover {
+    background-color: rgba(10, 10, 10, 0.493);
+    color: white;
+    transition: 0.4s all;
+  }
 }
 
 .users {
@@ -68,7 +79,23 @@
 .input__error {
   border: 3px solid rgb(235, 18, 18);
 }
+
+.not__found {
+  font-size: 25px;
+  color: red;
+  font-weight: 700;
+  margin-top: -30px;
+}
+
 // .........................USERLIST
+
+.search-sort__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
 .user__list,
 .user__list-change {
   display: flex;
@@ -134,8 +161,8 @@
   position: absolute;
   cursor: pointer;
   right: 15px;
-  top: 5px;
-  font-size: 25px;
+  top: 9px;
+  font-size: 20px;
 }
 .hidden {
   display: none;
@@ -148,19 +175,30 @@
 .sort__title {
   cursor: pointer;
   text-transform: capitalize;
+  transition: 0.3s all ease 0s;
+  &:hover {
+    font-weight: 700;
+    transition: 0.3s all ease 0s;
+  }
 }
 
 .sort__list {
   cursor: pointer;
   position: absolute;
   background-color: white;
-  padding: 10px;
+  padding: 10px 0;
   border: 1px solid rgb(10, 10, 10);
   border-radius: 10px;
   margin-top: 15px;
 
   li {
-    padding: 5px 10px;
+    padding: 5px 15px;
     text-transform: capitalize;
+    transition: 0.3s all ease 0s;
+    width: 100%;
+    &:hover {
+      background-color: rgba(10, 10, 10, 0.493);
+      transition: 0.3s all ease 0s;
+    }
   }
 }

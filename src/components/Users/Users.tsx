@@ -40,14 +40,7 @@ const Users:React.FC  = () => {
       />
       {isLoading && <h1 className='is__loading'>Loading....</h1>}
      {loadError && <p className='load__error'> {loadError}</p>}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '60px',
-        }}
-      >
+      <div className='search-sort__wrapper'>
         <div className='search__item'>
           <UsersSearch searchValue={searchValue} changeSearchValue={setSearchValue} />
         </div>
@@ -56,13 +49,13 @@ const Users:React.FC  = () => {
         </div>
       </div>
       {searchList.length !== 0 ? (
-        <div>
+        <div className='users__map'>
           {searchList.map((user:ListType, index:number) => (
             <UsersList key={uuidv4()} number={index + 1} user={user} remove={deleteUser} />
           ))}
         </div>
-      ) : (
-        <h1>Users not found</h1>
+      ) : ( !loadError &&
+        <h1 className='not__found'>Users not found</h1>
       )}
     </div>
   );
