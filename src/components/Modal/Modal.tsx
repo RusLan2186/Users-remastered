@@ -35,8 +35,7 @@ const Modal:React.FC<ModaProps> = ({ children, changeError, changePost }) => {
 
   const closeModal = () => {
     changeError('');
-  
-    changePost({ name: '', username: '' });
+  changePost({ name: '', username: '' });
     dispatch(openWindow(false));
   };
   return (

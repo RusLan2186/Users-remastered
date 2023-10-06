@@ -49,7 +49,7 @@ const UsersAdd:React.FC = () => {
         </button>
       </div>
       {openModal &&  (
-        <Modal  changeError={setError} changePost={setPost}>
+        <Modal   changeError={setError} changePost={setPost}>
           <div className='add__form'>
             <div className='form__item'>
               {error && <p className='error'>{error.errorName}</p>}

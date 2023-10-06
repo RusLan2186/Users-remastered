@@ -1,16 +1,20 @@
 import { useRef } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { search } from '../../redux/slices/usersSlice';
 
-const UsersSearch = ({ searchValue, changeSearchValue }) => {
-  const inputRef = useRef();
 
-  // const dispatch = useDispatch();
-  // const usersList = useSelector((store) => store.users.list);
+
+interface searchProps{
+  searchValue:string;
+  changeSearchValue:(searchValue:string) =>void;
+}
+
+const UsersSearch:React.FC<searchProps> = ({ searchValue, changeSearchValue }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+
 
   const clearInput = () => {
     changeSearchValue('');
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (
