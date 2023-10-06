@@ -2,16 +2,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { add, openWindow } from '../../redux/slices/usersSlice';
 import Modal from '../../Modal/Modal';
-import { RootState } from '../../redux/store';
+import { RootState, useAppDispatch } from '../../redux/store';
+
+type NewUserType = {
+  id:number;
+  name:string;
+  username:string;
+}
 
 const UsersAdd:React.FC = () => {
   const [post, setPost] = useState({ name: '', username: '' });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [error, setError] = useState<{errorName?:string; errorUserName?:string;}>( );
   const openModal = useSelector((store:RootState) => store.users.isModal);
 
   const addUser = (name:string, username:string) => {
-    const newUser = {
+    const newUser:NewUserType = {
       id: Date.now(),
       name,
       username,

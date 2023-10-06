@@ -61,7 +61,7 @@ const UsersChange:React.FC<UsersChangeProps> = ({ user, setIsChange }) => {
       <div className='change-form__item'>
        {changeError && <p className='change__error'>{changeError.changeErrorUserName}</p>}
         <input
-          className={ changeError && changeError.changeErrorUserName ? 'input__error' : 'input'}
+          className={ changeError&&changeError.changeErrorUserName ? 'input__error' : 'input'}
           value={changePost.changeUserName}
           onChange={(e) => setChangePost({ ...changePost, changeUserName: e.target.value })}
           type='text'
