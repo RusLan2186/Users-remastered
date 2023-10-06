@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import UsersList from './UsersList';
 
-import { ListType, UserSliceState, remove, search } from '../redux/slices/usersSlice';
+import { ListType,  remove, search } from '../redux/slices/usersSlice';
 import { fetchUsers } from '../redux/slices/ActionCreators';
 import UsersAdd from './actions/UsersAdd';
 import UsersSearch from './actions/UsersSearch';
@@ -16,7 +16,7 @@ const Users:React.FC  = () => {
   const loadError = useSelector((store:RootState) => store.users.error);
   const isLoading = useSelector((store:RootState) => store.users.isLoading);
   const searchList = useSelector((store:RootState) => store.users.searchList);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const [sortOpen, setSortOpen] = useState(false);
 
 

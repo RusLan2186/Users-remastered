@@ -12,7 +12,7 @@ const UsersSearch:React.FC<searchProps> = ({ searchValue, changeSearchValue }) =
 
 
 
-  const clearInput = () => {
+  const clearInput = (e:React.MouseEvent<HTMLParagraphElement>) => {
     changeSearchValue('');
     inputRef.current?.focus();
   };
