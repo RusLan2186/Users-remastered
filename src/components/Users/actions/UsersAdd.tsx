@@ -10,8 +10,13 @@ type NewUserType = {
   username:string;
 }
 
+type PostType = {
+  name:string;
+  username:string;
+  }
+
 const UsersAdd:React.FC = () => {
-  const [post, setPost] = useState({ name: '', username: '' });
+  const [post, setPost] = useState<PostType>({ name: '', username: '' });
   const dispatch = useAppDispatch();
   const [error, setError] = useState<{errorName?:string; errorUserName?:string;}>( );
   const openModal = useSelector((store:RootState) => store.users.isModal);
@@ -24,7 +29,7 @@ const UsersAdd:React.FC = () => {
     };
     if (post.name.length > 3 && post.username.length > 3) {
       dispatch(add(newUser));
-      setPost({ name: '', username: '' });
+      setPost({name:'', username: '' });
       setError({ errorName: '', errorUserName: '' });
       dispatch(openWindow(false));
     }
