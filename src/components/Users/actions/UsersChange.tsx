@@ -5,18 +5,21 @@ import { useAppDispatch } from '../../redux/store';
 
 interface UsersChangeProps{
   user:ListType;
-  // isChange?:boolean;
   setIsChange:(isChange:boolean) =>void;
 }
 
+type ChangePostType = {
+  changeName:string;
+  changeUserName:string;
+}
+
 const UsersChange:React.FC<UsersChangeProps> = ({ user, setIsChange }) => {
-// const UsersChange = ({ user, setIsChange }) => {
   const dispatch = useAppDispatch();
-  const [changePost, setChangePost] = useState({
+  const [changePost, setChangePost] = useState<ChangePostType>({
     changeName: user.name,
     changeUserName: user.username,
   });
-  // const [changeError, setChangeError] = useState({ changeErrorName: '' });
+
 
   const [changeError, setChangeError] = useState<
     { changeErrorName?: string; changeErrorUserName?:string; }
