@@ -34,7 +34,6 @@ const Users:React.FC  = () => {
   }, [usersList, searchValue]);
 
   const clearUsersHandle = () =>{
-    //@ts-ignore
   dispatch(clearUsers())
   }
 
