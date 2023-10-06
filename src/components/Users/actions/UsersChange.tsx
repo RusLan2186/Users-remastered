@@ -1,16 +1,28 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { change } from '../../redux/slices/usersSlice';
+import { ListType, change } from '../../redux/slices/usersSlice';
+import { useAppDispatch } from '../../redux/store';
 
-const UsersChange = ({ user, setIsChange }) => {
-  const dispatch = useDispatch();
-  const [changePost, setChangePost] = useState({
+
+interface UsersChangeProps{
+  user:ListType;
+  // isChange?:boolean;
+  setIsChange:(isChange:boolean) =>void;
+}
+
+
+const UsersChange:React.FC<UsersChangeProps> = ({ user, setIsChange }) => {
+  const dispatch = useAppDispatch();
+  const [changePost, setChangePost] = useState<{}>({
     changeName: user.name,
     changeUserName: user.username,
   });
-  const [changeError, setChangeError] = useState({ changeErrorName: '', changeErrorUserName: '' });
+  
+  const [changeError, setChangeError] = useState<
+    { changeErrorName?: string; changeErrorUserName?:string; }
+  >();
 
-  const changeUsers = (id) => {
+  const changeUsers = (id:number) => {
     if (changePost.changeName.length > 3 && changePost.changeUserName.length > 3) {
       dispatch(change({ id, name: changePost.changeName, username: changePost.changeUserName }));
       setIsChange(false);

@@ -1,9 +1,17 @@
 import { useState } from 'react';
 
 import UsersChange from './actions/UsersChange';
+import { ListType } from '../redux/slices/usersSlice';
 
-const UsersList = ({ user, number, remove }) => {
-  const [isChange, setIsChange] = useState(false);
+interface UsersListProps{
+  number:number;
+  user:ListType;
+  remove:(user:number) =>void; 
+}
+
+
+const UsersList:React.FC <UsersListProps> = ({ user, number, remove }) => {
+  const [isChange, setIsChange] = useState<boolean>(false);
 
   return (
     <div className={isChange ? '' : 'user__list user-list'}>
