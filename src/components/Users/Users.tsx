@@ -20,6 +20,7 @@ const Users:React.FC  = () => {
   const [sortOpen, setSortOpen] = useState(false);
 
 
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
@@ -38,7 +39,7 @@ const Users:React.FC  = () => {
       <UsersAdd
       />
       {isLoading && <h1 className='is__loading'>Loading....</h1>}
-      <p className='load__error'> {loadError}</p>
+     {loadError && <p className='load__error'> {loadError}</p>}
       <div
         style={{
           display: 'flex',

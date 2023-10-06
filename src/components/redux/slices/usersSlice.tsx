@@ -1,24 +1,19 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-
-
 export type ListType = {
 id:number;
 name:string;
 username:string;
 email?:string;
 adress?:{};
-
 }
-
 
 export interface UserSliceState{
   list:ListType[];
   isLoading:boolean;
-  error:string;
-  isModal:boolean;
+  error?: string;
+isModal:boolean;
   searchList:ListType[];
-
 }
 
 const initialState:UserSliceState = {
@@ -27,7 +22,6 @@ const initialState:UserSliceState = {
   error: '',
   isModal: false,
   searchList: [],
-
 };
 
 
@@ -41,7 +35,7 @@ export const usersSlice = createSlice({
     },
     usersFetchingSuccess: (state, action:PayloadAction<ListType[]>) => {
       state.isLoading = false;
-      state.error = '';
+      state.error ='';
       state.list = action.payload;
 
     },
