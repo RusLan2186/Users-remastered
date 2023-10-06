@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {useSelector } from 'react-redux';
-import { sort } from '../../redux/slices/usersSlice';
+import { ListType,  sort } from '../../redux/slices/usersSlice';
 import { RootState, useAppDispatch } from '../../redux/store';
 
 interface SortOpenProps{
@@ -13,17 +13,16 @@ const UsersSort:React.FC<SortOpenProps> = ({ sortOpen, setSortOpen }) => {
   const [sortTitle, setSortTitle] = useState<string>('name');
   const users = useSelector((store:RootState) => store.users.list);
   const dispatch = useAppDispatch();
+
+
+  let result:ListType[];
   const sortBy = (field:string) => {
-    let result;
+
     if (field === 'name') {
-      result = [...users].sort((a, b) => {
-        if (a['name'].toLowerCase() < b['name'].toLowerCase()) return -1;
-      });
-    }
+      result = [...users].sort((a, b) => a['name'].toLowerCase().localeCompare(b['name'].toLowerCase()));
+      }
     if (field === 'username') {
-      result = [...users].sort((a, b) => {
-        if (a['username'].toLowerCase() < b['username'].toLowerCase()) return -1;
-      });
+      result = [...users].sort((a, b) => a['username'].toLowerCase().localeCompare(b['username'].toLowerCase()));
     }
 
     setSortTitle(field);
