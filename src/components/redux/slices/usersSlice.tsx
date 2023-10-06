@@ -81,6 +81,9 @@ export const usersSlice = createSlice({
       state.isModal = action.payload;
     
     },
+    clearUsers:(state) =>{
+      state.list = [];
+    }
   },
 });
 
@@ -94,6 +97,7 @@ export const {
   usersFetchingError,
   sort,
   openWindow,
+  clearUsers
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import {  useSelector } from 'react-redux';
 import UsersList from './UsersList';
 
-import { ListType,  remove, search } from '../redux/slices/usersSlice';
+import { ListType,  remove, search, clearUsers } from '../redux/slices/usersSlice';
 import { fetchUsers } from '../redux/slices/ActionCreators';
 import UsersAdd from './actions/UsersAdd';
 import UsersSearch from './actions/UsersSearch';
 import UsersSort from './actions/UsersSort';
 import { v4 as uuidv4 } from 'uuid';
 import { RootState, useAppDispatch } from '../redux/store';
+
 
 const Users:React.FC  = () => {
   const dispatch = useAppDispatch();
@@ -27,15 +28,19 @@ const Users:React.FC  = () => {
 
   const deleteUser = (user:number) => {
     dispatch(remove(user));
-    
-    
-  };
+    };
   useEffect(() => {
     dispatch(search(searchValue));
   }, [usersList, searchValue]);
 
+  const clearUsersHandle = () =>{
+    //@ts-ignore
+  dispatch(clearUsers())
+  }
+
   return (
     <div onClick={() => setSortOpen(false)} className='container'>
+   
       <UsersAdd
       />
       {isLoading && <h1 className='is__loading'>Loading....</h1>}
@@ -57,7 +62,14 @@ const Users:React.FC  = () => {
       ) : ( !loadError &&
         <h1 className='not__found'>Users not found</h1>
       )}
-    </div>
+      {searchList.length > 0 &&
+      <div className='total-clear__wrapper'>
+         <h2 className='total'>Total number of users:  <span>{searchList.length}</span></h2>
+         <button className='button' onClick={clearUsersHandle}>Clear Users</button>
+      </div>
+      }
+   
+   </div>
   );
 };
 
