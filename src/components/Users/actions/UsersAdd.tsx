@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { add, openWindow } from '../../redux/slices/usersSlice';
-import Modal from '../../Modal/Modal';
+
 import { RootState, useAppDispatch } from '../../redux/store';
+import Modal from '../../Modal/Modal';
 
 type NewUserType = {
   id:number;
