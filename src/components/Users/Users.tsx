@@ -18,7 +18,7 @@ const Users:React.FC  = () => {
   const searchList = useSelector((store:RootState) => store.users.searchList);
   const [searchValue, setSearchValue] = useState('');
   const [sortOpen, setSortOpen] = useState(false);
-  // const [openModal, setOpenModal] = useState(false);
+
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -36,7 +36,6 @@ const Users:React.FC  = () => {
   return (
     <div onClick={() => setSortOpen(false)} className='container'>
       <UsersAdd
-      //  openModal={openModal} changeOpenModal={setOpenModal}
       />
       {isLoading && <h1 className='is__loading'>Loading....</h1>}
       <p className='load__error'> {loadError}</p>

@@ -1,12 +1,19 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import { sort } from '../../redux/slices/usersSlice';
+import { RootState, useAppDispatch } from '../../redux/store';
 
-const UsersSort = ({ sortOpen, setSortOpen }) => {
-  const [sortTitle, setSortTitle] = useState('name');
-  const users = useSelector((store) => store.users.list);
-  const dispatch = useDispatch();
-  const sortBy = (field) => {
+interface SortOpenProps{
+  sortOpen:boolean;
+  setSortOpen:(sortOpen:boolean) =>void;
+}
+
+
+const UsersSort:React.FC<SortOpenProps> = ({ sortOpen, setSortOpen }) => {
+  const [sortTitle, setSortTitle] = useState<string>('name');
+  const users = useSelector((store:RootState) => store.users.list);
+  const dispatch = useAppDispatch();
+  const sortBy = (field:string) => {
     let result;
     if (field === 'name') {
       result = [...users].sort((a, b) => {
